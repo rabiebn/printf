@@ -7,44 +7,53 @@
 
 int _printf(const char *format, ...)
 {
-	int i, counter = 0;
+	int i, j, counter = 0;
 	char *out_str;
 	va_list args;
+	char *s;
 
-	out_str = malloc(sizeof(*format));
+	out_str = malloc(sizeof(char) * (strlen(format) + 1));
+	if (out_str == NULL)
+	{
+		return (-1); /* indicate error*/
+	}
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0, j = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')
 			{
-				*(out_str + i) = (char) va_arg(args, int);
+				*(out_str + j) = (char) va_arg(args, int);
 				counter++;
+				j++;
 			}
 			if (format[i + 1] == 's')
 			{
-				int j = 0;
-				char *s;
-
 				s = va_arg(args, char *);
-				while(*(s + j) != '\0')
+				while (*s != '\0')
 				{
-					*(out_str + i) = *(s + j);
+					*(out_str + j) = *s;
 					counter++;
 					j++;
 				}
 			}
 			if (format[i + 1] == '%')
 			{
-				*(out_str + i) = '%';
+				*(out_str + j) = '%';
 				counter++;
+				j++;
 			}
+			i++;/* skip % specifier */
 		}
-		*(out_str + i) = (char) va_arg(args, int);
-		counter += 2;
+		else
+		{
+			*(out_str + j) = format[i];
+			counter++;
+			j++;
+		}
 	}
-	*(out_str + i) = '\0';
+	*(out_str + j) = '\0';
 	write(1, out_str, counter);
 	free(out_str);
 	va_end(args);
