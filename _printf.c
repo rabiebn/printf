@@ -8,14 +8,13 @@
 int _printf(const char *format, ...)
 {
 	int i, j, counter = 0;
-	char *out_str;
+	char *out_str, *s;
 	va_list args;
-	char *s;
 
 	out_str = malloc(sizeof(char) * (strlen(format) + 1));
 	if (out_str == NULL)
 	{
-		return (-1); /* indicate error*/
+		return (-1); /*return -1 to indicate error*/
 	}
 	va_start(args, format);
 	for (i = 0, j = 0; format[i] != '\0'; i++)
@@ -36,6 +35,7 @@ int _printf(const char *format, ...)
 					*(out_str + j) = *s;
 					counter++;
 					j++;
+					s++;
 				}
 			}
 			if (format[i + 1] == '%')
@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 				counter++;
 				j++;
 			}
-			i++;/* skip % specifier */
+			i++; /*skip over the conversion specifier*/
 		}
 		else
 		{
@@ -59,3 +59,4 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (counter);
 }
+
