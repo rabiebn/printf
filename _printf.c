@@ -1,10 +1,9 @@
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "main.h"
-
+/**
+ * _printf - function that produces output according to a format c, s and %
+ * @format: is a character string.
+ * Return:the number of characters printed (excluding '\0')
+ */
 int _printf(const char *format, ...)
 {
 	int i, j, counter = 0;
