@@ -5,13 +5,13 @@
  * @c: format specifier
  * Return: function
  */
-int * (*get_func(char c))(va_list)
+char * (*get_func(char c))(va_list)
 {
 	int i = 0;
 	printf_t char_to_func[] = {
 		{'c', format_char},
 		{'s', format_str},
-
+		{'%', format_percent},
 		{'\0', NULL}
 	};
 
