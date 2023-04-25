@@ -6,33 +6,44 @@
  */
 int _printf(const char *format, ...)
 {
-	int counter = 0;
-	char *out_str, *s_conv;
 	va_list args;
-	params_t params = PARAMS_ZERO;
+	char *out_str, *s;
+	int counter = 0;
+	params_t par = PARAMS_ZERO;
 
 	va_start(args, format);
-	if (!format || format[0] == '%' && !format[1])
+
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return(-1);
+		return (-1);
 
-	for (out_str = (char*)format; *out_str; out_str++)
+	for (out_str = (char *)format; *out_str; out_str++)
 	{
-		init_params(&params, args);
+		set_params_to_zero(args, &par);
 		if (*out_str != '%')
 		{
-			counter += (_putchar(*out_str));
+			counter += _putchar(*out_str);
 			continue;
 		}
-		s_conv = out_str;
+		s = out_str;
 		out_str++;
-		else 
-			counter += 
+		while (get_flag(out_str, par))
+		{
+			out_str++;
+		}
+		out_str = get_width(out_str, par, args);
+		out_str = get_percision(out_str, par, args);
+		if (get_modifier(out_str, par))
+			out_str++;
+		if (!get_specifier(out_str))
+			counter += print_from_to(s, out_str, par.l_mod || par.h_mod ? out_str - 1 : 0);
+		else
+			counter += get_func(out_str, args, par);
+	}
+	_putchar(BUF_FLUSH);
 
 	va_end(args);
-
-	write(1, out_str, counter);
 	return (counter);
 }
 

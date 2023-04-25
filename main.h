@@ -1,68 +1,85 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <unistd.h>
-#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <unistd.h>
+#include <stdarg.h>
+#include <limits.h>
 
-#define PARAMS_ZER0 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-#define EMPTY_STRING = "(null)"
+#define PARAMS_ZERO {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
+#define OUTPUT_BUF_SIZE 1024
+#define BUF_FLUSH -1
 /**
- * struct parameters - our parameters structure
- * @insign: flag in insigned value
- * @plus_flag: on if plus_flag specified
- * @space_flag: on if space_flag specified
- * @hashtag_flag: on if hashtag_flag specified
- * @zero_flag: on if zero_flag specified
- * @minus_flag: on if plus_flag specified
- * @width: field width specifier
- * @precision: field precision specifier
- * @h_modifier: on if specified
- * @l_modifier: on if specified
+ * struct parameters - struct of parameters
+ * @unsign: flag for unsigned value
+ *    * @plus_flag: plus_flag on when specified
+ *     * @space_flag: space_flag on when specified
+ *      * @hashtag_flag: hashtag_flag on when specified
+ *       * @zero_flag: zero_flag on when specified
+ *        * @minus_flag: minus_flag on when specified
+ *         *
+ *          * @width: field width
+ *           * @percision: field percision
+ *            *
+ *             * @h_mod: on when specified
+ *              * @l_mod: on when specified
  */
 typedef struct parameters
 {
-	unsigned int insign		:1;
-	unsigned int plus_flag		:1;
-	unsigned int space_flag		:1;
-	unsigned int hashtag_flag	:1;
-	unsigned int zero_flag          :1;
-	unsigned int minus_flag         :1;
+	unsigned int unsign         : 1;
+
+	unsigned int plus_flag      : 1;
+	unsigned int space_flag     : 1;
+	unsigned int hashtag_flag   : 1;
+	unsigned int zero_flag      : 1;
+	unsigned int minus_flag     : 1;
 
 	unsigned int width;
-	unsigned int precision;
+	unsigned int percision;
 
-	unsigned int h_modifier         :1;
-	unsigned int l_modifier         :1;
+	unsigned int h_mod          : 1;
+	unsigned int l_mod          : 1;
 } params_t;
 
+/* set_params_to_zero.c */
+void set_params_to_zero(va_list args, params_t *par);
+
 /**
- * struct specifier - structure for specifier 
- * @specifier: the specifier
- * @f: the function to apply
+ * struct formats - struct
+ * @identifier: the identifier of type to print
+ * @func: function associated with format
  */
-typedef struct specifier
+typedef struct formats
 {
-	char *specifier;
-	int (*f)(va_list, params_t *);
-} specifier_t;
+	char *identifier;
+	int (*func)(va_list, params_t);
+} printf_t;
 
-/* parametres function*/
-void init_params(params_t *params; va_list args);
+/* put.c */
+int _putchar(char c);
+int _putstr(char *s);
 
-/*write function*/
+/* format_funcs.c */
+int _strlen(const char *s);
+int _isdigit(int c);
+int format_char(va_list args, params_t par);
+int format_str(va_list args, params_t par);
+int format_percent(va_list args, params_t par);
 
+/* specifier.c */
+int (*get_specifier(char *s))(va_list, params_t);
+int get_func(char *s, va_list args, params_t par);
+int get_flag(char *s, params_t par);
+int get_modifier(char *s, params_t par);
+char *get_width(char *s, params_t par, va_list args);
+char *get_percision(char *s, params_t par, va_list args);
 
+/* print_from_to.c */
+int print_from_to(char *s, char *stop, char *except);
 
-/* _printf prototype*/
+/* _printf.c */
 int _printf(const char *format, ...);
 
-/* print_format_functions*/
-int format_char(va_list args, params_t *params);
-int format_str(va_list args, params_t *params);
-int format_percent(va_list args, params_t *params);
-
-#endif /*end _MAIN_H_*/
+#endif
