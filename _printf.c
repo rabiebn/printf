@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _printf - function that produces output according to a format c, s and %
+ * _printf - function that produces output according to a format
  * @format: is a character string.
  * Return:the number of characters printed (excluding '\0')
  */
@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return(-1);
+
 	for (out_str = (char*)format; *out_str; out_str++)
 	{
 		init_params(&params, args);
@@ -27,12 +28,9 @@ int _printf(const char *format, ...)
 		s_conv = out_str;
 		out_str++;
 
-	counter = _format(out_str, format, args);
 	va_end(args);
 
 	write(1, out_str, counter);
-	free(out_str);
-
 	return (counter);
 }
 

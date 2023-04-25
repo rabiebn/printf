@@ -39,8 +39,23 @@ typedef struct parameters
 	unsigned int l_modifier         :1;
 } params_t;
 
+/**
+ * struct specifier - structure for specifier 
+ * @specifier: the specifier
+ * @f: the function to apply
+ */
+typedef struct specifier
+{
+	char *specifier;
+	int (*f)(va_list, params_t *);
+} specifier_t;
 
+/* parametres function*/
 void init_params(params_t *params; va_list args);
+
+/*write function*/
+
+
 
 /* _printf prototype*/
 int _printf(const char *format, ...);
