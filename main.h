@@ -68,7 +68,7 @@ int format_char(va_list args, params_t par);
 int format_str(va_list args, params_t par);
 int format_percent(va_list args, params_t par);
 int format_int(va_list args, params_t par);
-int format_binary((va_list args, params_t par);
+int format_binary(va_list args, params_t par);
 /* specifier.c */
 int (*get_specifier(char *s))(va_list, params_t);
 int get_func(char *s, va_list args, params_t par);
