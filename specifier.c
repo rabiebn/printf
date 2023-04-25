@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- *  * get_specifier - gets the format function
- *   * @s: format string
- *    * Return: number of bytes printed
- *     */
+ * get_specifier - gets the format function
+ * @s: format string
+ * Return: number of bytes printed
+ */
 int (*get_specifier(char *s))(va_list args, params_t par)
 {
 	printf_t specifier[] = {
@@ -26,13 +26,13 @@ int (*get_specifier(char *s))(va_list args, params_t par)
 }
 
 /**
- *  * get_func - gets the format function
- *   * @s: format string
- *    * @args: arguments' pointer
- *     * @par: the parameters struct
- *      * Return: the number of bytes printed
- *      */
-int get_func(char *s, va_list args,__attribute__((unused)) params_t par) /* __attribute__((unused)) */
+ * get_func - gets the format function
+ * @s: format string
+ * @args: arguments' pointer
+ * @par: the parameters struct
+ * Return: the number of bytes printed
+ */
+int get_func(char *s, va_list args, __attribute__((unused)) params_t par)
 {
 	int (*func)(va_list, params_t) = get_specifier(s);
 
@@ -42,11 +42,11 @@ int get_func(char *s, va_list args,__attribute__((unused)) params_t par) /* __at
 }
 
 /**
- *  * get_flag - gets the flag function
- *   * @s: format string
- *    * @par: parameters struct
- *     * Return: if flag was specified
- *     */
+ * get_flag - gets the flag function
+ * @s: format string
+ * @par: parameters struct
+ * Return: if flag was specified
+ */
 int get_flag(char *s, params_t par)
 {
 	int i = 0;
@@ -73,11 +73,11 @@ int get_flag(char *s, params_t par)
 }
 
 /**
- *  * get_modifier - gets the modifier function
- *   * @s: format string
- *    * @par: parameters struct
- *     * Return: if modifier was specified
- *     */
+ * get_modifier - gets the modifier function
+ * @s: format string
+ * @par: parameters struct
+ * Return: if modifier was specified
+ */
 int get_modifier(char *s, params_t par)
 {
 	int i = 0;
@@ -95,12 +95,12 @@ int get_modifier(char *s, params_t par)
 }
 
 /**
- *  * get_width - gets the width from the format string
- *   * @s: format string
- *    * @par: parameters struct
- *     * @args: arguments' pointer
- *      * Return: pointer
- *      */
+ * get_width - gets the width from the format string
+ * @s: format string
+ * @par: parameters struct
+ * @args: arguments' pointer
+ * Return: pointer
+ */
 char *get_width(char *s, __attribute__((unused)) params_t par, va_list args)
 {
 	int i = 0;
@@ -120,13 +120,14 @@ char *get_width(char *s, __attribute__((unused)) params_t par, va_list args)
 }
 
 /**
- *  * get_percision - gets the percision from format
- *   * @s: format string
- *    * @par: parameters struct
- *     * @args: arguments' pointer
- *      * Return: pointer
- *      */
-char *get_percision(char *s, __attribute__((unused)) params_t par, va_list args)
+ * get_percision - gets the percision from format
+ * @s: format string
+ * @par: parameters struct
+ * @args: arguments' pointer
+ * Return: pointer
+ */
+char *get_percision(char *s, __attribute__((unused)) params_t par,
+		va_list args)
 {
 	int i = 0;
 

@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- *  * init_params - reset struct fields to zero
- *   * @args: arguments' pointer
- *    * @par: the parameters struct
- *     * 
- *     */
+ * init_params - reset struct fields to zero
+ * @args: arguments' pointer
+ * @par: the parameters struct
+ *
+ */
 void set_params_to_zero(va_list args, params_t *par)
 {
 	par->unsign = 0;

@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- *  * _putchar - prints a char
- *   * @c: char to print
- *    * Return: on success 1,
- *     * On error, -1 is returned, and errno is set appropriately
- *     */
+ * _putchar - prints a char
+ * @c: char to print
+ * Return: on success 1,
+ * On error, -1 is returned, and errno is set appropriately
+ */
 int _putchar(char c)
 {
 	static int i;
@@ -22,10 +22,10 @@ int _putchar(char c)
 }
 
 /**
- *  * _putstr - prints a string using _putchar
- *   * @s: string to print
- *    * Return: number of characters printed
- *    */
+ * _putstr - prints a string using _putchar
+ * @s: string to print
+ * Return: number of characters printed
+ */
 int _putstr(char *s)
 {
 	int i = 0;

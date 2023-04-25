@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- *  * _strlen - calculates the length of a string
- *   * @s: string
- *    * Return: length of the string
- *     */
+ * _strlen - calculates the length of a string
+ * @s: string
+ * Return: length of the string
+ */
+
 int _strlen(const char *s)
 {
 	int len = 0;
@@ -16,18 +17,21 @@ int _strlen(const char *s)
 }
 
 /**
- *  * _isdigit - checks if char is digit
- *   * @c: char to check
- *    * Return: 1 if digit, 0 if not
- *    */
+ * _isdigit - checks if char is digit
+ * @c: char to check
+ * Return: 1 if digit, 0 if not
+ */
 int _isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
 
 /**
- *  * format_char - 
- *  */
+ * format_char - prints char
+ * @args: argument pointer
+ * @par: parameters struct
+ * Return: number of bytes printed
+ */
 int format_char(va_list args, params_t par)
 {
 	char pad_char = ' ';
@@ -44,11 +48,11 @@ int format_char(va_list args, params_t par)
 }
 
 /**
- *  * format_str - prints string
- *   * @args: argument pointer
- *    * @par: parameters struct
- *     * Return: number of bytes printed
- *     */
+ * format_str - prints string
+ * @args: argument pointer
+ * @par: parameters struct
+ * Return: number of bytes printed
+ */
 int format_str(va_list args, params_t par)
 {
 	char *s = va_arg(args, char *), space_char = ' ';
@@ -87,11 +91,11 @@ int format_str(va_list args, params_t par)
 }
 
 /**
- *  * format_percent - prints %
- *   * @args: argument pointer
- *    * @par: parameters struct
- *     * Return: number of bytes printed
- *     */
+ * format_percent - prints %
+ * @args: argument pointer
+ * @par: parameters struct
+ * Return: number of bytes printed
+ */
 int format_percent(va_list args, params_t par)
 {
 	(void)args;
