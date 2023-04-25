@@ -8,7 +8,7 @@
 #include <string.h>
 
 #define PARAMS_ZER0 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-
+#define EMPTY_STRING = "(null)"
 
 /**
  * struct parameters - our parameters structure

@@ -27,6 +27,8 @@ int _printf(const char *format, ...)
 		}
 		s_conv = out_str;
 		out_str++;
+		else 
+			counter += 
 
 	va_end(args);
 
