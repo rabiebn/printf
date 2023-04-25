@@ -102,3 +102,21 @@ int format_percent(va_list args, params_t par)
 	(void)par;
 	return (_putchar('%'));
 }
+/**
+ * print_binary - the unsigned int argument is converted to binary
+ * @args: arguments pointer
+ * @par: parameters struct
+ * Return: nbr of bytes printed
+ */
+int print_binary(va_list args, params_t par)
+{
+        unsigned int n = va_arg(args, unsigned int);
+	int c = 0;
+	char *str = convert(n, 2, CONVERT_UNSIGNED, params);
+
+	if (par.hashtag_flag && n)
+		*--str = '0';
+	par.unsign = 1;
+	return (c += print_number(str, par));
+}
+
