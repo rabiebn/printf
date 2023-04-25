@@ -17,7 +17,6 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-
 	for (out_str = (char *)format; *out_str; out_str++)
 	{
 		set_params_to_zero(args, &par);
@@ -37,12 +36,13 @@ int _printf(const char *format, ...)
 		if (get_modifier(out_str, par))
 			out_str++;
 		if (!get_specifier(out_str))
-			counter += print_from_to(s, out_str, par.l_mod || par.h_mod ? out_str - 1 : 0);
+			counter += print_from_to(s, out_str,
+					par.l_mod || par.h_mod ?
+					out_str - 1 : 0);
 		else
 			counter += get_func(out_str, args, par);
 	}
 	_putchar(BUF_FLUSH);
-
 	va_end(args);
 	return (counter);
 }
