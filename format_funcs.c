@@ -5,6 +5,10 @@
  * @s: string
  * Return: length of the string
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57b4dc3fc12532e92fb5e173f126bb532d280f64
 int _strlen(const char *s)
 {
 	int len = 0;
@@ -26,12 +30,20 @@ int _isdigit(int c)
 }
 
 /**
+<<<<<<< HEAD
  * format_char - helper function that formats a single character
  * @args: argument pointer
  * @par: the parameters struct
  * Return: the number of characters printed
  */
 
+=======
+ * format_char - prints char
+ * @args: argument pointer
+ * @par: parameters struct
+ * Return: number of bytes printed
+ */
+>>>>>>> 57b4dc3fc12532e92fb5e173f126bb532d280f64
 int format_char(va_list args, params_t par)
 {
 	char pad_char = ' ';
