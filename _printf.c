@@ -9,14 +9,18 @@ int _printf(const char *format, ...)
 	int counter = 0;
 	char *out_str, *s;
 	va_list args;
+	params_t params = PARAMS_ZERO;
 
 	va_start(args, format);
-	if (!format || format[0] == '%' && format[1] == 
+	if (!format || format[0] == '%' && !format[1])
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return(-1);
+
 	if (out_str == NULL)
 	{
 		return (-1); /*return -1 to indicate error*/
 	}
-	va_start(args, format);
 	counter = _format(out_str, format, args);
 	va_end(args);
 
