@@ -39,6 +39,9 @@ typedef struct parameters
 	unsigned int l_modifier         :1;
 } params_t;
 
+
+void init_params(params_t *params; va_list args);
+
 /* _printf prototype*/
 int _printf(const char *format, ...);
 

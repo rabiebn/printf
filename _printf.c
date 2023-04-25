@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	int counter = 0;
-	char *out_str, *s;
+	char *out_str, *s_conv;
 	va_list args;
 	params_t params = PARAMS_ZERO;
 
@@ -16,11 +16,17 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return(-1);
-
-	if (out_str == NULL)
+	for (out_str = (char*)format; *out_str; out_str++)
 	{
-		return (-1); /*return -1 to indicate error*/
-	}
+		init_params(&params, args);
+		if (*out_str != '%')
+		{
+			counter += (_putchar(*out_str));
+			continue;
+		}
+		s_conv = out_str;
+		out_str++;
+
 	counter = _format(out_str, format, args);
 	va_end(args);
 

@@ -2,10 +2,11 @@
 
 /**
  * init_params - initialize all the struct's fields to their default values
- * @params: struct parameters 
+ * @params: struct parameters
  * @args: the arguments
+ * Return: void
  */
-void init_params(params_t *params; va_list args)
+void init_params(params_t *params, va_list args)
 {
 	params->insign = 0;
 	params->plus_flag = 0;
@@ -19,17 +20,3 @@ void init_params(params_t *params; va_list args)
 	params->l_modifier = 0;
 	(void) args;
 }
-
-
-        unsigned int plus_flag          :1;
-        unsigned int space_flag         :1;
-        unsigned int hashtag_flag       :1;
-        unsigned int zero_flag          :1;
-        unsigned int minus_flag         :1;
-
-        unsigned int width;
-        unsigned int precision;
-
-        unsigned int h_modifier         :1;
-        unsigned int l_modifier         :1;
-
