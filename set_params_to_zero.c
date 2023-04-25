@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * init_params - reset struct fields to zero
+ * set_params_to_zero - reset struct fields to zero
  * @args: arguments' pointer
  * @par: the parameters struct
  *
