@@ -1,6 +1,25 @@
 #include "main.h"
 
 /**
+ * print_int - prints integer
+ * @args: argument pointer
+ * @par: parameters struct
+ * Return: number of bytes printed
+ */
+int print_int(va_list args, params_t par)
+{
+	long l;
+
+	if (par.l_mod)
+		l = va_arg(args, long);
+	else if (par.h_mod)
+		l = (short int)va_arg(args, int);
+	else
+		l = (int)va_arg(args, int);
+	return (print_number(convert(l, 10, 0, par), par));
+}
+
+/**
  * print_hex - prints unsigned hex numbers in lowercase
  * @args: the argument pointer
  * @par: the parameters struct
@@ -93,7 +112,7 @@ int print_octal(va_list args, params_t par)
 	else
 		l = (unsigned int)va_arg(args, unsigned int);
 	s = convert(1, 8, CONVERT_UNSIGNED, par);
-	if (par.hashtag_flag && 1)
+	if (par.hashtag_flag && l)
 		*--s = '0';
 	par.unsign = 1;
 	return (c += print_number(s, par));

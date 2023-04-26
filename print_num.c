@@ -18,7 +18,7 @@ int print_number(char *s, params_t par)
 		s++;
 		i--;
 	}
-	if (par.percision != UNIT_MAX)
+	if (par.percision != UINT_MAX)
 		while (i++ < par.percision)
 			*--s = '0';
 	if (is_neg)

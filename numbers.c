@@ -24,7 +24,7 @@ char *convert(long int num, int base, int flags, params_t par)
 	}
 	array = flags & CONVERT_LOWERCASE ?
 		"0123456789abcdef" : "0123456789ABCDEF";
-	P = &buffer[49];
+	p = &buffer[49];
 	*p = '\0';
 
 	do {
@@ -63,7 +63,7 @@ int print_unsigned(va_list args, params_t par)
  * @par: the parameters struct
  * Return: number of bytes printed
  */
-int print_adress(va_list args, params_t *par)
+int print_address(va_list args, params_t par)
 {
 	unsigned long int n = va_arg(args, unsigned long int);
 	char *s;

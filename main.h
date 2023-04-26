@@ -81,9 +81,10 @@ char *get_percision(char *s, params_t par, va_list args);
 /* numbers.c*/
 char *convert(long int num, int base, int flags, params_t par);
 int print_unsigned(va_list args, params_t par);
-int print_adress(va_list args, params_t *par);
+int print_address(va_list args, params_t par);
 
 /* convert_num.c */
+int print_int(va_list args, params_t par);
 int print_hex(va_list args, params_t par);
 int print_HEX(va_list args, params_t par);
 int print_binary(va_list args, params_t par);
