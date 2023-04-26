@@ -11,7 +11,8 @@ int (*get_specifier(char *s))(va_list args, params_t par)
 		{"c", format_char},
 		{"s", format_str},
 		{"%", format_percent},
-		/* I'm gonna add more structs here*/
+		{"d", format_int},
+		{"i", format_int},
 		{NULL, NULL}
 	};
 	int i = 0;
