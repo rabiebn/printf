@@ -11,8 +11,17 @@ int (*get_specifier(char *s))(va_list args, params_t par)
 		{"c", format_char},
 		{"s", format_str},
 		{"%", format_percent},
-		{"d", format_int},
-		{"i", format_int},
+		{"d", print_int},
+		{"i", print_int},
+		{"b", print_binary},
+		{"o", print_octal},
+		{"u", print_unsigned},
+		{"x", print_hex},
+		{"X", print_HEX},
+		{"p", print_address},
+		{"S", print_S},
+		{"r", print_rev},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -33,7 +42,7 @@ int (*get_specifier(char *s))(va_list args, params_t par)
  * @par: the parameters struct
  * Return: the number of bytes printed
  */
-int get_func(char *s, va_list args, __attribute__((unused)) params_t par)
+int get_func(char *s, va_list args, params_t par)
 {
 	int (*func)(va_list, params_t) = get_specifier(s);
 
