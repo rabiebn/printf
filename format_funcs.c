@@ -102,3 +102,4 @@ int format_percent(va_list args, params_t par)
 	(void)par;
 	return (_putchar('%'));
 }
+
