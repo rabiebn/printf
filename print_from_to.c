@@ -53,7 +53,7 @@ int print_rot13(va_list args, params_t par)
 {
 	int i = 0, j = 0, counter = 0;
 	char rot13[] =
-		"NOPQRSTUVWXYZABCDEFGHIJKLM	nopqrstuvwxyzabcdefghijklm";
+		"NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
 	char *s = va_arg(args, char *);
 	(void)par;
 
