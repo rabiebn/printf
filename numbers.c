@@ -69,7 +69,7 @@ int print_address(va_list args, params_t par)
 	char *s;
 
 	if (!n)
-		return (_putstr("(nill)"));
+		return (_putstr("(nil)"));
 
 	s = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, par);
 	*--s = 'x';
