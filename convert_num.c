@@ -111,7 +111,7 @@ int print_octal(va_list args, params_t par)
 		l = (unsigned short int)va_arg(args, unsigned int);
 	else
 		l = (unsigned int)va_arg(args, unsigned int);
-	s = convert(1, 8, CONVERT_UNSIGNED, par);
+	s = convert(l, 8, CONVERT_UNSIGNED, par);
 	if (par.hashtag_flag && l)
 		*--s = '0';
 	par.unsign = 1;
