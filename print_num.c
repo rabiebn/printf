@@ -65,7 +65,7 @@ int print_number_right_shift(char *s, params_t par)
 	if (par.plus_flag && !is_neg2 && pad_char == ' ' && !par.unsign)
 		n += _putchar('+');
 	else if (!par.plus_flag && par.space_flag && !is_neg2 &&
-			!par.unsign && par.zero_flag)
+			!par.unsign && !par.zero_flag)
 		n += _putchar(' ');
 	n += _putstr(s);
 	return (n);
