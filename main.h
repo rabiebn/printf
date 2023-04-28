@@ -46,7 +46,7 @@ typedef struct parameters
 } params_t;
 
 /* set_params_to_zero.c */
-void set_params_to_zero(va_list args, params_t *par);
+void set_params_to_zero(params_t *par, va_list args);
 
 /**
  * struct formats - struct

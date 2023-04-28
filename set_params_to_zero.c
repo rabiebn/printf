@@ -6,7 +6,7 @@
  * @par: the parameters struct
  *
  */
-void set_params_to_zero(va_list args, params_t *par)
+void set_params_to_zero(params_t *par, va_list args)
 {
 	par->unsign = 0;
 	par->plus_flag = 0;

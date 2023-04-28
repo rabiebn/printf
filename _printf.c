@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (out_str = (char *)format; *out_str; out_str++)
 	{
-		set_params_to_zero(args, &par);
+		set_params_to_zero(&par, args);
 		if (*out_str != '%')
 		{
 			counter += _putchar(*out_str);
